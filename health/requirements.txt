@@ -1,6 +1,6 @@
-Flask
-torch
+gunicorn
 transformers
-pandas
 scikit-learn
-numpy
+torch
+pandas
+flask
