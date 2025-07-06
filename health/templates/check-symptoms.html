@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
+    <meta name="theme-color" content="#8e1c3a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+       <!-- Favicon links -->
+    <link rel="icon" type="image/x-icon" href="/static/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <title>Check Symptoms - AI Health Assistant</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9; 
+        color: #333; 
+        line-height: 1.6;
+        font-size: 1rem; 
+        }
+
+        section {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        fieldset {
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        legend {
+            color: #007bff;
+            font-size: 18px;
+        }
+        label {
+            display: block;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #eaf7ff;
+            border: 1px solid #b8e2ff;
+            border-radius: 10px;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        #result.visible {
+            display: block;
+        }
+        #result h3 {
+            color: #0056b3;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        #result ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        #result ul li {
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            section {
+                padding: 20px;
+            }
+            button {
+                font-size: 14px;
+                padding: 10px;
+            }
+            header nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        </style>
+
+</head>
+<body>
+    <header>
+        <div class="hero">
+            <h2>Check Your Symptoms Here</h2>
+            <p>Select The Symptoms To Find Out Possible Illness</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="about-us">About Us</a></li>
+                <li><a href="check-symptoms">Check Symptoms</a></li>
+                <li><a href="disease-info">Diseases</a></li>
+                <li><a href="about-our-ai-tool">About The Tool</a></li>
+                <li><a href="contact-us">Contact Us</a></li>
+                <li><a href="faq">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="check-symptoms">
+        <h2>AI-Powered Symptom Checker</h2>
+        <p>Select the symptoms you are experiencing. Our AI will analyze them to provide insights about potential conditions.</p>
+
+        <form id="symptom-form" action="/results" method="GET">
+            <div id="symptom-container" class="grid-container">
+                <!-- Symptoms will be populated here -->
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <p><strong>Selected symptoms:</strong> <span id="symptom-count">0</span></p>
+                <button type="submit">Analyze My Symptoms</button>
+            </div>
+        </form>
+    </section>
+
+    <div id="result"></div>
+
+    <script>
+        // Update symptom count
+        function updateSymptomCount() {
+            const count = document.querySelectorAll('input[name="symptoms[]"]:checked').length;
+            document.getElementById('symptom-count').textContent = count;
+        }
+
+        // Add event listeners to all checkboxes
+        function addEventListeners() {
+            const checkboxes = document.querySelectorAll('input[name="symptoms[]"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateSymptomCount);
+            });
+        }
+
+        const symptomSets = {
+            'Respiratory Symptoms': [
+                'Cough', 'Difficulty-in-Breathing', 'Sore-Throat', 'Wheezing', 'Runny-Nose',
+                'Nasal-Congestion', 'Sneezing'
+            ],
+            'Systemic Symptoms': [
+                'Fever', 'Fatigue', 'Chills', 'Loss of Taste', 'Loss of Smell'
+            ],
+            'Body pain Symptoms': [
+                'Body-Pain', 'Joint-Pain', 'Muscle-Pain', 'Headache', 'Severe-Headache'
+            ],
+            'Skin Symptoms': [
+                'Rash', 'Hemorrhagic-Rash','Itching','Swelling'
+            ],
+            'Digestive Symptoms': [
+                'Diarrhea', 'Vomiting', 'Abdominal-Pain', 'Nausea', 'Loss-of-Appetite',
+                'Blood-in-Vomit', 'Blood-in-Stool', 'Jaundice'
+            ],
+            'Oral Symptoms': [
+                'Oral-Lesions', 'Difficulty-Swallowing', 'Swollen-Gums', 'Mouth-Ulcers', 'Bad-Breath', 'Gum-Bleeding'
+            ],
+            'Genital Symptoms': [
+                'Genital-Lesions', 'Painful-Urination', 'Abnormal-Discharge', 'Swollen-Lymph-Nodes', 'Burning-Sensation'
+            ],
+            'Eye Symptoms': [
+                'Redness', 'Itching', 'Discharge', 'Pain', 'Blurred-Vision', 'Sensitivity-to-Light'
+            ],
+            'Bleeding Symptoms': [
+                'Nosebleeds', 'Gum-Bleeding', 'Blood-in-Vomit', 'Blood-in-Stool', 'Hemorrhagic-Rash'
+            ]
+        };
+
+        function generateSymptoms() {
+            const container = document.getElementById("symptom-container");
+
+            for (const [setName, symptoms] of Object.entries(symptomSets)) {
+                const fieldset = document.createElement("fieldset");
+                const legend = document.createElement("legend");
+                legend.textContent = setName;
+                fieldset.appendChild(legend);
+
+                symptoms.forEach(symptom => {
+                    const label = document.createElement("label");
+                    const checkbox = document.createElement("input");
+                    checkbox.type = "checkbox";
+                    checkbox.name = "symptoms[]";
+                    checkbox.value = symptom;
+
+                    label.appendChild(checkbox);
+                    label.appendChild(document.createTextNode(" " + symptom.replace(/-/g, " ")));
+                    fieldset.appendChild(label);
+                    fieldset.appendChild(document.createElement("br"));
+                });
+
+                container.appendChild(fieldset);
+            }
+        }
+
+        function validateForm() {
+            const checkboxes = document.querySelectorAll('input[name="symptoms[]"]:checked');
+            if (checkboxes.length === 0) {
+                alert('Please select at least one symptom before submitting.');
+                return false;
+            }
+            if (checkboxes.length > 20) {
+                alert('Please select no more than 20 symptoms for accurate analysis.');
+                return false;
+            }
+            return true;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            generateSymptoms();
+            updateSymptomCount(); // Initialize count
+            addEventListeners();
+
+            const form = document.getElementById('symptom-form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    if (!validateForm()) {
+                        e.preventDefault();
+                    }
+                });
+            }
+        });
+
+                function displayResults() {
+            const selectedSymptoms = Array.from(document.querySelectorAll('input[name="symptoms[]"]:checked'))
+                .map(checkbox => checkbox.value);
+
+            if (selectedSymptoms.length < 2) {
+                alert("Please select at least 2 symptoms.");
+                return false;
+            }
+
+            // Create the popup modal
+            const modal = document.createElement('div');
+            modal.id = 'popup-modal';
+            modal.innerHTML = `
+                <div class="popup-content">
+                    <span id="close-popup">&times;</span>
+                    <h3>Selected Symptoms:</h3>
+                    <ul>${selectedSymptoms.map(symptom => `<li>${symptom}</li>`).join('')}</ul>
+                    <p>Results are being processed.</p>
+                    <p>PLEASE WAIT </p>
+                    <p>Redirecting...</p>
+                </div>
+            `;
+            document.body.appendChild(modal);
+
+            // Add close functionality
+            document.getElementById('close-popup').onclick = () => {
+                modal.remove();
+            };
+
+            // Show the popup
+            modal.style.display = 'block';
+
+            // Simulate redirection
+            setTimeout(() => {
+                const queryString = selectedSymptoms.map(symptom => `symptoms[]=${encodeURIComponent(symptom)}`).join("&");
+                window.location.href = `/results?${queryString}`;
+            }, 2000);
+
+            return false;
+        }
+
+    </script>
+    <footer>
+        <p>&copy; 2024 Artificial Intelligence Department, Vishwakarma University</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0" />
+    <meta name="theme-color" content="#8e1c3a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+       <!-- Favicon links -->
+    <link rel="icon" type="image/x-icon" href="/static/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <title>Results - AI Health Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Health Analysis Results</h1>
+        </header>
+
+        <section>
+            {% if error %}
+                <div class="error-message">
+                    <h3>⚠️ Error</h3>
+                    <p>{{ error }}</p>
+                    <a href="/check-symptoms" class="btn-primary">Try Again</a>
+                </div>
+            {% else %}
+                <div class="success-message">
+                    <h2>✅ Symptom Analysis Complete</h2>
+                </div>
+
+                {% if symptoms %}
+                    <div class="symptoms-list">
+                        <h4>Analyzed Symptoms:</h4>
+                        <ul>
+                            {% for symptom in symptoms %}
+                                <li>{{ symptom.replace('-', ' ').title() }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                {% if res %}
+                    <div class="results-container">
+                        <h3>Diagnostic Analysis:</h3>
+                        <div class="prediction-item"><strong>Analysis Status:</strong> {{ res['Predictions']['ML Subcategory Prediction'] }}</div>
+                        <div class="prediction-item"><strong>Primary Category:</strong> {{ res['Predictions']['ML Category Prediction'] }}</div>
+
+                        {% if res['Scores'] %}
+                            <div class="prediction-item">
+                                <strong>Confidence Level:</strong> 
+                                <span class="confidence-{{ res['Scores']['Confidence'].lower() }}">{{ res['Scores']['Confidence'] }}</span>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="results-container">
+                        <h3>⚕️Recommendations:</h3>
+                        <ul>
+                            <li><strong>Consult a Healthcare Professional:</strong> This analysis is for informational purposes only and should not replace professional medical advice.</li>
+                            <li><strong>Monitor Symptoms:</strong> Keep track of any changes in your symptoms.</li>
+                            <li><strong>Emergency Care:</strong> Seek immediate medical attention if symptoms worsen.</li>
+                            {% if res['Scores']['Confidence'] == 'High' %}
+                                <li><strong>High Confidence Result:</strong> Strong correlation with identified category.</li>
+                            {% elif res['Scores']['Confidence'] == 'Medium' %}
+                                <li><strong>Medium Confidence:</strong> Consider giving more detailed symptoms.</li>
+                            {% else %}
+                                <li><strong>Low Confidence:</strong> Consider consulting a professional.</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                <div class="button-group">
+                    <a href="/check-symptoms" class="btn-primary">Check New Symptoms</a>
+                    <a href="/" class="btn-primary">Back to Home</a>
+                </div>
+            {% endif %}
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('section, .results-container');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+    </script>
+        <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Artificial Intelligence Department, Vishwakarma University</p>
+    </footer>
+</body>
+</html>

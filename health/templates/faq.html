@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
+    <meta name="theme-color" content="#8e1c3a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+       <!-- Favicon links -->
+    <link rel="icon" type="image/x-icon" href="/static/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <title>FAQ - AI Health Assistant</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="hero">
+            <h2>Frequently Asked Questions</h2>
+            <p>have a doubt ask a question</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="about-us">About Us</a></li>
+                <li><a href="check-symptoms">Check Symptoms</a></li>
+                <li><a href="disease-info">Diseases</a></li>
+                <li><a href="about-our-ai-tool">About The Tool</a></li>
+                <li><a href="contact-us">Contact Us</a></li>
+                <li><a href="faq">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>AI Customer Support</h1>
+        <form action="/get_answer" method="POST">
+            <input type="text" name="query" placeholder="Type your question here..." required value="{{ user_query }}">
+            <input type="submit" value="Ask">
+        </form>
+
+        {% if user_query %}
+            <div class="answer">
+                <h3>Response To Your Question</h3>
+                <p>{{ answer }}</p>
+            </div>
+        {% endif %}
+
+        <div class="suggestions">
+            <h4>Frequently Asked Questions:</h4>
+            <ul>
+                {% for question in questions %}
+                    <li>{{ question }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Artificial Intelligence Department, Vishwakarma University</p>
+    </footer>
+</body>
+</html>

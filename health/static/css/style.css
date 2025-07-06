@@ -1,0 +1,814 @@
+/* =====================================================================
+   GLOBAL STYLES - Edit if you want to change general font, background, etc.
+===================================================================== */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; /* Light cream background - Edit here */
+    color: #333; /* Text color - Edit here */
+    line-height: 1.6;
+    font-size: 1rem; /* Set font size - Adjust this if needed */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    touch-action: manipulation;
+}
+
+/* =====================================================================
+   HEADER STYLES - Edit for Header Background, Text, and Navigation
+===================================================================== */
+header {
+    background: linear-gradient(130deg, #8e1c3a, #490e44);
+    color: white;
+    padding: 1rem 1rem;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    border-bottom: 4px solid #a9dfbf; /* Light green bottom border - Edit color */
+    /* border-radius: 10px 10px 0 0; */
+    font-size: 1.2rem; /* Adjusted font size - Edit if you need to change size */
+    position: relative;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+header nav ul li {
+    margin: 0.5rem 0.5rem;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    transition: color 0.3s ease, transform 0.2s ease;
+    display: block;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Navigation Hover Effects */
+header nav ul li a:hover {
+    color: #a9dfbf; /* Light green text color on hover - Edit color */
+    transform: translateY(-2px);
+}
+
+/* =====================================================================
+   FOOTER STYLES - Edit Footer Background, Text, etc.
+===================================================================== */
+footer {
+    background: linear-gradient(130deg, #8e1c3a, #490e44);
+    color: white;
+    padding: 0.5rem; /* Reduced padding for a smaller height */
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 0.9rem; /* Reduced font size */
+}
+
+/* Adding space above the footer */
+body {
+    padding-bottom: 5rem; /* Creates space between content and footer */
+}
+
+
+
+/* =====================================================================
+   MAIN SECTION STYLES - Edit for Main Content Area Styling
+===================================================================== */
+section {
+    padding: 2rem 1rem;
+    margin: 1rem auto;
+    max-width: 1200px;
+    background-color: #ffffff; /* Cream background for content - Edit color */
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(20px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1rem; /* Font size - Edit size here */
+    width: calc(100% - 2rem);
+    box-sizing: border-box;
+}
+
+section:hover {
+    transform: translateY(0);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =====================================================================
+   SYMPTOM CHECK SECTION - Edit this section for symptom layout
+===================================================================== */
+#check-symptoms {
+    padding: 2rem;
+    margin: 2rem auto;
+    background: linear-gradient(135deg, #ffffff, #fafafa); /* Light cream gradient - Edit color */
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    max-width: 1500px;
+    box-sizing: border-box;
+    font-size: 1rem; /* Font size - Edit if needed */
+}
+
+#check-symptoms:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* =====================================================================
+   GRID LAYOUT FOR SYMPTOMS - Edit this for how symptoms are displayed
+===================================================================== */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Adjust columns here */
+    gap: 4rem;
+    padding: 0;
+}
+
+/* Mobile-first responsive adjustments */
+@media (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    header {
+        padding: 1rem 0.5rem;
+        font-size: 1rem;
+    }
+
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        min-height: 48px;
+        touch-action: manipulation;
+    }
+
+    header nav ul {
+        flex-direction: row;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    header nav ul li {
+        margin: 0.2rem;
+    }
+
+    header nav ul li a {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.6rem;
+    }
+
+    footer {
+        padding: 1rem;
+        position: relative;
+        margin-top: 2rem;
+    }
+
+    body {
+        padding-bottom: 1rem;
+    }
+
+    section {
+        margin: 0.5rem auto;
+        padding: 1.5rem 1rem;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .hero {
+        padding: 2rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    button {
+        width: 100%;
+        padding: 1.2rem;
+        font-size: 1.1rem;
+        margin: 1rem 0;
+    }
+
+    header {
+        padding: 0.8rem 0.5rem;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    header nav ul li a {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .hero h2 {
+        font-size: 1.3rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+    }
+
+    section {
+        padding: 1rem 0.8rem;
+        margin: 0.3rem auto;
+        width: calc(100% - 1rem);
+    }
+
+    fieldset {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    legend {
+        font-size: 1rem;
+    }
+
+    label {
+        font-size: 0.95rem;
+        margin: 0.5rem 0;
+        display: flex;
+        align-items: center;
+    }
+
+    input[type="checkbox"] {
+        margin-right: 0.8rem;
+        transform: scale(1.2);
+    }
+}
+
+/* =====================================================================
+   FIELDSET STYLES - Edit for form section layout
+===================================================================== */
+fieldset {
+    border: 2px solid #ddd; /* Border color - Edit here */
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: #fafafa; /* Background color - Edit here */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+fieldset:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+legend {
+    font-weight: bold;
+    color: #333; /* Text color - Edit here */
+    padding: 0 10px;
+}
+
+/* =====================================================================
+   CHECKBOX STYLES - Edit to change checkbox appearance
+===================================================================== */
+input[type="checkbox"] {
+    margin-right: 0.6rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #8e1c3a; /* Checkbox checked color - Edit here */
+    transform: scale(1.1); /* Adjust size of checked box */
+}
+
+/* =====================================================================
+   BUTTON STYLING - Edit for button appearance and hover effects
+===================================================================== */
+button {
+    background-color: #9b1f40; /* Button color - Edit here */
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+    font-size: 1rem; /* Font size - Edit here */
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    display: block;
+    margin: 2rem auto;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-height: 48px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:hover {
+    background-color: #8e1c3a; /* Hover color - Edit here */
+    transform: translateY(-2px);
+}
+
+/* =====================================================================
+   Health allerts display
+===================================================================== */
+#health-alerts ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+#health-alerts ul li {
+    margin-bottom: 10px;
+}
+
+#health-alerts ul li a {
+    text-decoration: none;
+    color: #8e1c3a;
+    font-weight: bold;
+}
+
+#health-alerts ul li a:hover {
+    text-decoration: underline;
+}
+
+/* =====================================================================
+   Disease Info Page
+===================================================================== */
+.hero {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background: linear-gradient(130deg, #aa1a40, #80335b);
+
+    color: white;
+    border-radius: 12px;
+    margin: 2rem auto;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hero h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+}
+
+/* Disease Cards */
+.disease-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.disease-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.disease-card h3 {
+    font-size: 1.4rem;
+    color: #9b1f40;
+}
+
+.disease-card p {
+    font-size: 1rem;
+    color: #555;
+    margin: 1rem 0;
+}
+
+.disease-card .read-more {
+    color: #8e1c3a;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.disease-card .read-more:hover {
+    color: #a9dfbf;
+    text-decoration: underline;
+}
+
+/* Disease Detail Section */
+.disease-detail {
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.disease-detail h2 {
+    color: #9b1f40;
+    margin-bottom: 1rem;
+}
+
+.disease-detail ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.disease-detail ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* =====================================================================
+   Popup processing Page
+===================================================================== */
+
+#popup-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;    /* Centers vertically */
+    z-index: 1000;
+}
+
+.popup-content {
+    background: #fffde7; /* Slight yellowish background */
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* position: relative; */
+}
+
+#close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s;
+}
+
+#close-popup:hover {
+    color: red;
+}
+
+.popup-content h3 {
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.popup-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.popup-content ul li {
+    margin: 5px 0;
+    color: #333;
+    font-size: 16px;
+}
+
+.popup-content p {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* =====================================================================
+   CONTACT PAGE STYLES
+===================================================================== */
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 1.5rem;
+    background: linear-gradient(130deg, #8e1c3a, #490e44);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Emergency Notice */
+.emergency-notice {
+    background-color: #fff3cd;
+    color: #856404;
+    border-left: 6px solid #ffecb5;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+/* Grid layout for two columns */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+/* Cards */
+.contact-card {
+    background-color: #fafafa;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Contact details section */
+.contact-details {
+    margin-top: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.2rem;
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    color: #9b1f40;
+}
+
+/* Office hours */
+.office-hours {
+    margin-top: 2rem;
+}
+
+.office-hours h3 {
+    margin-bottom: 0.5rem;
+    color: #9b1f40;
+}
+
+.hours-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Contact form styling */
+.contact-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.contact-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    border-color: #9b1f40;
+    outline: none;
+}
+
+/* Textarea */
+.contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Submit button */
+.submit-btn {
+    background-color: #9b1f40;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #8e1c3a;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* FAQ System Container */
+.container {
+    max-width: 800px;
+    margin: 1rem auto;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    width: calc(100% - 2rem);
+    box-sizing: border-box;
+}
+
+/* FAQ Title */
+.container h1 {
+    color: #9b1f40;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Input field and submit button */
+form input[type="text"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+form input[type="submit"],
+form button {
+    background-color: #9b1f40;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover,
+form button:hover {
+    background-color: #7a1934;
+}
+
+/* ================================
+   FAQ PAGE STYLING - Headings & Text
+================================= */
+.container h1 {
+    color: cornsilk; /* Dark maroon brand color */
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.answer h3,
+.suggestions h4 {
+    color: #9b1f40; /* Dark maroon brand color */
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.feedback h3 {
+    color: #9b1f40; /* Dark maroon brand color */
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.suggestions ul li {
+    color: cornsilk;
+    font-size: 1rem;
+}
+
+.container p,
+.answer p,
+.feedback-received {
+    color: #333;
+    font-size: 1rem;
+}
+
+/* Highlight Question/Answer Titles */
+.answer h3 {
+    margin-top: 1.2rem;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+}
+
+
+/* Feedback Box Heading */
+.feedback h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #9b1f40;
+    padding-left: 0.6rem;
+}
+
+.answer {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #fffbe7;
+    border-left: 6px solid #9b1f40;
+    border-radius: 8px;
+}
+
+.answer h3 {
+    margin-top: 0;
+    color: #9b1f40;
+}
+
+/* Suggestions list */
+.suggestions {
+    margin-top: 2rem;
+}
+
+.suggestions h4 {
+    color: cornsilk;
+}
+
+.suggestions ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+}
+
+.suggestions ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* Feedback form */
+.feedback {
+    margin-top: 2rem;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.feedback input[type="text"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* Feedback Thank You */
+.feedback-received {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Reset query button */
+button {
+    margin-top: 2rem;
+    display: block;
+    width: 100%;
+}
+

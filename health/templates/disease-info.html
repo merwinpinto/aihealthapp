@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <!-- Favicon links -->
+    <link rel="icon" type="image/x-icon" href="/static/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <title>Disease Information</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script>
+        // JavaScript function to toggle disease detail visibility
+        function toggleDetail(diseaseId) {
+            var detailSection = document.getElementById(diseaseId);
+            var link = document.getElementById(diseaseId + '-link');
+
+            if (detailSection.style.display === "none") {
+                detailSection.style.display = "block";
+                link.innerHTML = "Read Less"; // Change link text
+            } else {
+                detailSection.style.display = "none";
+                link.innerHTML = "Read More"; // Change link text back
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="hero">
+            <h2>Diseases Information</h2>
+            <p>Explore detailed information about common and rare diseases.</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="about-us">About Us</a></li>
+                <li><a href="check-symptoms">Check Symptoms</a></li>
+                <li><a href="disease-info">Diseases</a></li>
+                <li><a href="about-our-ai-tool">About The Tool</a></li>
+                <li><a href="contact-us">Contact Us</a></li>
+                <li><a href="faq">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>Learn About Diseases</h2>
+            <p>Explore detailed information about common diseases, their symptoms, prevention, and treatments.</p>
+        </section>
+
+        <!-- Disease List Section -->
+        <section id="disease-list">
+            <h2>List of Diseases</h2>
+            <div class="grid-container">
+                <article class="disease-card">
+                    <h3>Influenza (Flu)</h3>
+                    <p>
+                        A contagious respiratory illness caused by influenza viruses. Common symptoms include fever, chills, muscle aches, cough, and fatigue.
+                    </p>
+                </article>
+                <article class="disease-card">
+                    <h3>Covid-19</h3>
+                    <p>
+                        A viral respiratory illness caused by SARS-CoV-2. Symptoms range from mild fever to severe breathing issues.
+                    </p>
+                </article>
+                <article class="disease-card">
+                    <h3>Dengue</h3>
+                    <p>
+                        A mosquito-borne viral infection causing high fever, rash, and muscle pain. Severe cases can lead to dengue hemorrhagic fever.
+                    </p>
+                </article>
+                <article class="disease-card">
+                    <h3>Malaria</h3>
+                    <p>
+                        A parasitic infection transmitted by Anopheles mosquitoes. Symptoms include fever, chills, and sweating.
+                    </p>
+                </article>
+                <article class="disease-card">
+                    <h3>Common Cold</h3>
+                    <p>
+                        A mild viral infection of the nose and throat. Symptoms include runny nose, sneezing, and sore throat.
+                    </p>
+
+                </article>
+            </div>
+        </section>
+
+        <!-- Detailed Disease Section -->
+        <section id="flu" class="disease-detail" style="display:none;">
+            <h2>Influenza (Flu)</h2>
+            <p>
+                Influenza is a viral infection that attacks the respiratory system — your nose, throat, and lungs. It's commonly called the flu. Symptoms include:
+            </p>
+            <ul>
+                <li>Fever or chills</li>
+                <li>Muscle aches</li>
+                <li>Cough and sore throat</li>
+                <li>Runny or stuffy nose</li>
+                <li>Fatigue</li>
+            </ul>
+            <p><strong>Prevention:</strong> Get vaccinated annually, maintain hygiene, and avoid close contact with sick people.</p>
+            <p><strong>Treatment:</strong> Antiviral drugs, rest, and fluids.</p>
+        </section>
+
+        <section id="covid" class="disease-detail" style="display:none;">
+            <h2>Covid-19</h2>
+            <p>
+                Covid-19 is a respiratory illness caused by the SARS-CoV-2 virus. Symptoms range from mild to severe and may include:
+            </p>
+            <ul>
+                <li>Fever or chills</li>
+                <li>Cough and difficulty breathing</li>
+                <li>Loss of taste or smell</li>
+                <li>Fatigue</li>
+                <li>Sore throat</li>
+                <li>Headache</li>
+                <li>Shortness of breath</li>
+            </ul>
+            <p><strong>Prevention:</strong> Wear masks, practice social distancing, and wash hands frequently.</p>
+            <p><strong>Treatment:</strong> Hospitalization for severe cases, antivirals, and supportive care (rest and fluids).</p>
+        </section>
+
+        <section id="dengue" class="disease-detail" style="display:none;">
+            <h2>Dengue</h2>
+            <p>
+                Dengue is a viral infection transmitted by mosquitoes, causing flu-like symptoms and in severe cases, dengue hemorrhagic fever. Symptoms include:
+            </p>
+            <ul>
+                <li>High fever</li>
+                <li>Severe headache</li>
+                <li>Joint and muscle pain</li>
+                <li>Nausea and vomiting</li>
+                <li>Rash</li>
+            </ul>
+            <p><strong>Prevention:</strong> Avoid mosquito bites, use mosquito nets, and eliminate mosquito breeding sites.</p>
+            <p><strong>Treatment:</strong> No specific antiviral treatment. Fluid replacement, rest, and fever-reducing medications.</p>
+        </section>
+
+        <section id="malaria" class="disease-detail" style="display:none;">
+            <h2>Malaria</h2>
+            <p>
+                Malaria is a parasitic disease spread by Anopheles mosquitoes. Symptoms include:
+            </p>
+            <ul>
+                <li>Fever and chills</li>
+                <li>Headache</li>
+                <li>Fatigue</li>
+                <li>Nausea and vomiting</li>
+                <li>Anemia</li>
+            </ul>
+            <p><strong>Prevention:</strong> Use insect repellent, sleep under mosquito nets, and take antimalarial drugs.</p>
+            <p><strong>Treatment:</strong> Antimalarial drugs such as chloroquine, artemisinin-based combination therapies (ACT).</p>
+        </section>
+
+        <section id="cold" class="disease-detail" style="display:none;">
+            <h2>Common Cold</h2>
+            <p>
+                The common cold is a viral infection that affects the upper respiratory tract. Symptoms include:
+            </p>
+            <ul>
+                <li>Runny nose</li>
+                <li>Sneezing</li>
+                <li>Sore throat</li>
+                <li>Cough</li>
+                <li>Mild headache</li>
+            </ul>
+            <p><strong>Prevention:</strong> Wash hands frequently, avoid close contact with sick individuals, and maintain good hygiene.</p>
+            <p><strong>Treatment:</strong> Rest, fluids, and over-the-counter medications for symptom relief.</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Artificial Intelligence Department, Vishwakarma University</p>
+    </footer>
+</body>
+</html>

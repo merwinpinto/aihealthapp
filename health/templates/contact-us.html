@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <!-- Favicon links -->
+    <link rel="icon" type="image/x-icon" href="/static/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <title>Contact Us - Health Finder</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+
+</head>
+<body>
+    <header>
+        <div class="hero">
+            <h2>Contact Details</h2>
+            <p>Contact us for more details</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="about-us">About Us</a></li>
+                <li><a href="check-symptoms">Check Symptoms</a></li>
+                <li><a href="disease-info">Diseases</a></li>
+                <li><a href="about-our-ai-tool">About The Tool</a></li>
+                <li><a href="contact-us">Contact Us</a></li>
+                <li><a href="faq">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="emergency-notice">
+            <h3>⚠️ Medical Emergency Notice</h3>
+            <p><strong>This tool is for informational purposes only and cannot replace professional medical advice. In case of medical emergency, please call your local emergency number immediately.</strong></p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h2>Get In Touch</h2>
+                <p>We're here to help! Reach out to us for any questions about our AI health tool, technical support, or general inquiries.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <span class="contact-icon"></span>
+                        <div>
+                            <strong>Email:</strong><br>
+                            merwin.pinto.in@gmail.com<br>
+                            <small>Response time: 24-48 hours</small>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span class="contact-icon"></span>
+                        <div>
+                            <strong>Phone:</strong><br>
+                            +91 9355549845<br>
+                            <small>Available </small>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span class="contact-icon"></span>
+                        <div>
+                            <strong>Address:</strong><br>
+                            AI Department<br>
+                            Vishwakarma University<br>
+                            Pune, Maharashtra, India
+                        </div>
+                    </div>
+                </div>
+
+                <div class="office-hours">
+                    <h3>Office Hours</h3>
+                    <div class="hours-item">
+                        <span>Monday - Saturday</span>
+                        <span>9:00 AM - 6:00 PM</span>
+                    </div>
+                
+                    <div class="hours-item">
+                        <span>Sunday</span>
+                        <span>Closed</span>
+                    </div>
+                </div>
+            </div>
+
+           <div class="contact-card">
+    <h2>Send Us a Message</h2>
+   <form class="contact-form" action="https://formspree.io/f/mjkrdyle" method="POST">
+        
+        <!-- Optional: disable CAPTCHA -->
+        <input type="hidden" name="_captcha" value="false">
+
+        <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone">
+        </div>
+
+        <div class="form-group">
+            <label for="subject">Subject *</label>
+            <select id="subject" name="subject" required>
+                <option value="">Select a topic</option>
+                <option value="technical-support">Technical Support</option>
+                <option value="general-inquiry">General Inquiry</option>
+                <option value="feedback">Feedback</option>
+                <option value="bug-report">Bug Report</option>
+                <option value="feature-request">Feature Request</option>
+                <option value="medical-question">Medical Question</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" placeholder="Please describe your inquiry in detail..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+</div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Artificial Intelligence Department, Vishwakarma University</p>
+    </footer>
+</body>
+</html>
