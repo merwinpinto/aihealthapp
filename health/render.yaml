@@ -3,7 +3,7 @@ services:
     name: health-ai-tool
     env: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "python app.py"
+    startCommand: "gunicorn app:app --bind 0.0.0.0:$PORT"
     envVars:
       - key: PORT
         value: 5000
