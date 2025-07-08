@@ -66,8 +66,8 @@ def initialize_models():
             questions_list = faq_df['Question'].tolist()
 
         # Load pre-trained model and tokenizer
-        tokenizer = AutoTokenizer.from_pretrained('prajjwal1/bert-small')
-        model = AutoModel.from_pretrained('prajjwal1/bert-small')
+        tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
+        model = AutoModel.from_pretrained('bert-base-uncased')
 
         # Get embeddings for FAQ questions
         faq_embeddings = get_embeddings(faq_df['Question'].tolist())
@@ -569,11 +569,11 @@ def results():
         print(f"Error in results: {e}")
         return render_template('results.html', error="An error occurred during analysis. Please try again.")
 
-import os, psutil
+# import os, psutil
 
-process = psutil.Process(os.getpid())
-print("CPU %:", process.cpu_percent(interval=1.0))
-print("RAM MB:", process.memory_info().rss / (1024 * 1024))
+# process = psutil.Process(os.getpid())
+# print("CPU %:", process.cpu_percent(interval=1.0))
+# print("RAM MB:", process.memory_info().rss / (1024 * 1024))
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
